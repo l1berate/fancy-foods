@@ -28,6 +28,8 @@ else
     app.UseHsts();
 }
 
+// Example add/commit/merge
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
