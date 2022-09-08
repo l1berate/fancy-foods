@@ -7,7 +7,7 @@ namespace ShoppingAppMVC.Models.EF
     {
         public string? ItemName { get; set; }
         public decimal? Cost { get; set; }
-
+        public int? Quantity { get; set; }
         public virtual Item? ItemNameNavigation { get; set; }
     }
 }
