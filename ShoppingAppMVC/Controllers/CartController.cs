@@ -20,14 +20,12 @@ namespace ShoppingAppMVC.Controllers
                 Problem("Entity set 'shoppingDBContext.Carts' is null.");
         }
 
-        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToCart([Bind("ItemName,Cost,Quantity")]Cart product)
         {
             if (ModelState.IsValid)
             {
                 this._context.Carts.Add(product);
                 await _context.SaveChangesAsync();
-                //return View(product);
             }
 
             return RedirectToAction("Index", "Cart");
