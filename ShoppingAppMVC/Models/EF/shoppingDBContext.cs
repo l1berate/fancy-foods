@@ -37,18 +37,19 @@ namespace ShoppingAppMVC.Models.EF
         {
             modelBuilder.Entity<Cart>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Id)
+                    .HasName("pk_id");
 
                 entity.ToTable("Cart");
-
-                entity.Property(e => e.Cost)
-                    .HasColumnType("decimal(10, 2)")
-                    .HasColumnName("cost");
 
                 entity.Property(e => e.ItemName)
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("itemName");
+
+                entity.Property(e => e.Cost)
+                    .HasColumnType("decimal(10, 2)")
+                    .HasColumnName("cost");
 
                 entity.Property(e => e.Quantity)
                     .HasColumnType("int")

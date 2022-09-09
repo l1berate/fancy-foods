@@ -20,7 +20,7 @@ namespace ShoppingAppMVC.Controllers
                 Problem("Entity set 'shoppingDBContext.Carts' is null.");
         }
 
-        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToCart([Bind("ItemName,Cost,Quantity")]Cart product)
         {
             if (ModelState.IsValid)
