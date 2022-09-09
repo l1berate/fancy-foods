@@ -19,5 +19,16 @@ namespace ShoppingAppMVC.Controllers
                 View(await _context.Carts.ToListAsync()) :
                 Problem("Entity set 'shoppingDBContext.Carts' is null.");
         }
+
+        public async Task<IActionResult> AddToCart([Bind("ItemName,Cost,Quantity")]Cart product)
+        {
+            if (ModelState.IsValid)
+            {
+                this._context.Carts.Add(product);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index", "Cart");
+        }
     }
 }
