@@ -20,7 +20,7 @@ namespace ShoppingAppMVC.Controllers
                 Problem("Entity set 'shoppingDBContext.Carts' is null.");
         }
 
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToCart([Bind("ItemName,Cost,Quantity")]Cart product)
         {
             if (ModelState.IsValid)
@@ -30,7 +30,7 @@ namespace ShoppingAppMVC.Controllers
                 //return View(product);
             }
 
-            return View(product);
+            return RedirectToAction("Index", "Cart");
         }
     }
 }
