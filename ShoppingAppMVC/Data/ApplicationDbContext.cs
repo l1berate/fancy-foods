@@ -10,6 +10,5 @@ namespace ShoppingAppMVC.Data
             : base(options)
         {
         }
-        public DbSet<ShoppingAppMVC.Models.Food>? Food { get; set; }
     }
 }
