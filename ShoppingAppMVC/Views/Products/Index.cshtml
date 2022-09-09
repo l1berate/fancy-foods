@@ -4,45 +4,48 @@
     ViewData["Title"] = "Products";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 style="text-align: center;">@ViewData["Title"]</h1>
 
 <hr />
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<link rel="stylesheet" href="//bootstrap-extension.com/bootstrap-extension-5.2.1/css/bootstrap-extension.min.css" type="text/css">
+<script src="//bootstrap-extension.com/bootstrap-extension-5.2.1/js/bootstrap-extension.min.js"></script>
+
+<div class="container" style="max-width: 1000px">
+<div class="row row-cols-1 row-cols-md-3 g-4">
 @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-        </tr>
+        @if (item.Quantity > 0)
+        {
+            <div class="col d-flex justify-content-center">
+                <div class="card h-100 hover-zoom-sm" style="width: 25rem; height: 32rem;">
+                    <img src="/img/@Html.DisplayFor(modelItem => item.PictureFile)" class="card-img-top" alt="@Html.DisplayFor(modelItem => item.ItemName)" style="height: 13rem; object-fit: contain;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.ItemName)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <p class="card-text text-end">$@Html.DisplayFor(modelItem => item.Cost)</p>
+                    </div>
+                    <div class="card-footer text-end"><a href="#" class="btn btn-primary">Add to Cart</a></div>
+                </div>
+            </div>
+        }
     }
-    </tbody>
-</table>
+@foreach (var item in Model)
+    {
+        @if (item.Quantity <= 0)
+        {
+            <div class="col d-flex justify-content-center">
+                <div class="card h-100 grayscale hover-zoom-sm" style="width: 25rem; height: 32rem;">
+                    <img src="/img/@Html.DisplayFor(modelItem => item.PictureFile)" class="card-img-top" alt="@Html.DisplayFor(modelItem => item.ItemName)" style="height: 13rem; object-fit: contain;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.ItemName)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <p class="card-text text-end">$@Html.DisplayFor(modelItem => item.Cost)</p>
+                    </div>
+                        <div class="card-footer text-end"><a href="#" class="btn btn-secondary">Sold Out</a></div>
+                </div>
+            </div>
+        }
+    }
+</div>
+</div>

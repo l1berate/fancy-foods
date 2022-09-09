@@ -71,11 +71,16 @@ namespace ShoppingAppMVC.Models.EF
                     .HasColumnName("cost");
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(20)
+                    .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("description");
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.Property(e => e.PictureFile)
+                    .HasMaxLength(40)
+                    .IsUnicode(false)
+                    .HasColumnName("pictureFile");
             });
 
             modelBuilder.Entity<User>(entity =>
