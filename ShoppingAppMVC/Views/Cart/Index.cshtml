@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ShoppingAppMVC.Models.EF.Cart>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cart in Model)
+        {
+            <tr>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Quantity)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

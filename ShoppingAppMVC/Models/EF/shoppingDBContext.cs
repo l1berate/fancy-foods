@@ -50,6 +50,10 @@ namespace ShoppingAppMVC.Models.EF
                     .IsUnicode(false)
                     .HasColumnName("itemName");
 
+                entity.Property(e => e.Quantity)
+                    .HasColumnType("int")
+                    .HasColumnName("quantity");
+
                 entity.HasOne(d => d.ItemNameNavigation)
                     .WithMany()
                     .HasForeignKey(d => d.ItemName)
