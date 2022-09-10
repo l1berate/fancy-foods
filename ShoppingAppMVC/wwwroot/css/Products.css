@@ -1,0 +1,28 @@
+﻿.btn-toolbar {
+    justify-content: space-evenly !important;
+}
+
+.card.h-100.hover-zoom-sm.border-secondary.border-1:hover {
+    padding-right: calc(var(--bs-gutter-x) * .5) !important;
+    padding-left: calc(var(--bs-gutter-x) * .5) !important;
+}
+
+#liveToast.toast {
+    width: 30rem !important;
+    font-size: large !important;
+}
+
+#liveToastDel.toast {
+    width: 30rem !important;
+    font-size: large !important;
+}
+
+.dropdown-menu-center {
+    position: absolute !important;
+    left: -150% !important;
+    text-align: center !important;
+}
+
+.btn.btn-outline-secondary {
+    border-radius: 0rem !important;
+}

@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+body::before {
+    display: block;
+    content: '';
+    height: 70px;
+}
