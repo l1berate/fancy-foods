@@ -17,6 +17,7 @@ namespace ShoppingAppMVC.Models.EF
         {
         }
 
+        public virtual DbSet<Orders> Orders { get; set; } = null!;
         public virtual DbSet<Cart> Carts { get; set; } = null!;
         public virtual DbSet<Item> Items { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
@@ -35,6 +36,41 @@ namespace ShoppingAppMVC.Models.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Orders>(entity =>
+            {
+                entity.HasKey(e => e.OrderNo)
+                    .HasName("pk_orderNo");
+
+                entity.ToTable("Orders");
+
+                entity.Property(e => e.ItemName)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("itemName");
+
+                entity.Property(e => e.Cost)
+                    .HasColumnType("decimal(10, 2)")
+                    .HasColumnName("cost");
+
+                entity.Property(e => e.Quantity)
+                    .HasColumnType("int")
+                    .HasColumnName("quantity");
+
+                entity.Property(e => e.UserNo)
+                    .HasColumnType("int")
+                    .HasColumnName("userNo");
+
+                entity.HasOne(d => d.ItemNameNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.ItemName)
+                    .HasConstraintName("fk_orderItemName");
+
+                entity.HasOne(d => d.UserNoNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.UserNo)
+                    .HasConstraintName("fk_userNo");
+            });
+
             modelBuilder.Entity<Cart>(entity =>
             {
                 entity.HasKey(e => e.Id)
