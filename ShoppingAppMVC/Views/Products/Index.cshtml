@@ -4,17 +4,15 @@
     ViewData["Title"] = "Products";
 }
 
-<h1 style="text-align: center;">Fancy Foods @ViewData["Title"]</h1>
-<h3 style="text-align: center;">~forever fancy~</h3>
+<h1 style="text-align: center;">Our Products</h1>
 
 <hr />
 
 <link rel="stylesheet" href="/bootstrap-extension-5.2.1/css/bootstrap-extension.min.css" type="text/css">
 <script src="/bootstrap-extension-5.2.1/js/bootstrap-extension.min.js"></script>
-<script src="/js/Products.js"></script>
 <link rel="stylesheet" href="/css/Products.css" type="text/css">
 
-<div class="container" style="max-width: 1000px">
+<div class="container" style="max-width: 70rem;">
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
 @foreach (var item in Model)
@@ -34,18 +32,19 @@
                                 <button type="button" class="btn btn-outline-danger" onclick="decrementMe(this);"><b>-</b></button>
                                 <div class="dropup">
                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" id="@Html.DisplayFor(modelItem => item.ItemName) Quantity">1</button>
-                                    <form class="dropdown-menu dropdown-menu-center p-2" onsubmit="updateQuantity(this);return false;">
+                                    <div class="dropdown-menu dropdown-menu-center p-2">
                                         <div class="p-2">
                                             <input type="text" maxlength="3" min="0" max="100" step="1" style="width:3rem;text-align:center;vertical-align:middle;" id="@Html.DisplayFor(modelItem => item.ItemName) Form Input" placeholder="">
-                                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                            <button type="submit" class="btn btn-primary btn-sm" onclick="updateQuantity(this);">Update</button>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                                 <button type="button" class="btn btn-outline-success" onclick="incrementMe(this);"><b>+</b></button>
                             </div>
                             <div class="cart-buttons">
                                 <button type="button" class="btn btn-primary cartaddbtn" onclick="addToCart(this, '@Html.DisplayFor(modelItem => item.ItemName)');">Add to Cart</button>
                                 <button hidden type="button" class="btn btn-danger cartbyebtn" onclick="remove(this, '@Html.DisplayFor(modelItem => item.ItemName)');">Remove</button>
+                                <button hidden type="button" class="btn btn-outline-secondary cartconfirmbtn" disabled>Added to Cart &#9989;</button>
                             </div>
                         </div>
                 </div>
