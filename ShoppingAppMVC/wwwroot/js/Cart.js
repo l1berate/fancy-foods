@@ -5,6 +5,9 @@ function showCart() {
 
     var cartItems = Cookies.get('items');
 
+    if (cartItems == undefined) { 
+        document.getElementById("empty-message").hidden = false;
+        document.getElementById("cart-body").hidden = true;
         return;
     }
 
