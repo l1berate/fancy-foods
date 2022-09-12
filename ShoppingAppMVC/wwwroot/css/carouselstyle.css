@@ -15,7 +15,7 @@ body {
 /* Carousel base class */
 .carousel {
     margin-bottom: 4rem;
-    
+    margin: 3rem;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -46,8 +46,11 @@ body {
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
-    margin-bottom: 1.5rem;
     text-align: center;
+    background-color: rgba(255,255,255,0.75);
+    margin: 1.5rem;
+    width: 20rem;
+    padding: 1rem;
 }
 
 .marketing h2 {
@@ -66,6 +69,7 @@ body {
 
 .featurette-divider {
     margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+    color: white;
 }
 
 /* Thin out the marketing headings */
@@ -74,6 +78,16 @@ body {
     line-height: 1;
     /* rtl:remove */
     letter-spacing: -.05rem;
+}
+
+.col-md-7 {
+    background-color: rgba(255,255,255,0.75);
+}
+
+.col-md-5 {
+    background-color: rgba(255,255,255,0.75);
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 
@@ -93,8 +107,9 @@ body {
     }
 }
 
+
 @media (min-width: 62em) {
     .featurette-heading {
-        margin-top: 7rem;
+        margin-top: 2rem;
     }
 }
