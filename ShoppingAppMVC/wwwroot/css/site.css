@@ -14,5 +14,27 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: url("/img/farm.jpg") fixed;
+    background-size: cover;
+    color:white;
+}
+
+body::before {
+    display: block;
+    content: '';
+    height: 70px;
+}
+
+.modal-backdrop {
+    z-index: 1029 !important;
+}
+
+.modal-content {
+    top: 3rem;
+}
+
+footer {
+    background-color: white;
+    text-align: center;
 }

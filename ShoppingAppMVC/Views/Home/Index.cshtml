@@ -2,7 +2,147 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<link href="carousel.css" rel="stylesheet">
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+      <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <svg width=100% height=100% preserveAspectRatio="xMinYMin slice" viewBox=" 0 0 300 200">
+                        
+                        <image href="/img/farmer.png" width=100% height=100% />
+                    </svg>
+                    
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Organic Food at Your Doorsteps!.</h1>
+                            <p>Enjoy organic, Non-GMO, locally sourced groceries.</p>
+                            <p><a class="btn btn-lg btn-primary" href="Home/Cart">Order Now</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <svg width=100% height=100% preserveAspectRatio="xMinYMin slice" viewBox=" 0 0 300 200">
+
+                        <image href="/img/cleandirt.jpg" width=100% height=100% />
+                    </svg>
+
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Enjoy a Seamless Experience</h1>
+                            <p>Browse, Select, Pay and Done!</p>
+                            <p><a class="btn btn-lg btn-primary" href="Home/Cart">Browse Products</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <svg width=100% height=100% preserveAspectRatio="xMinYMin slice" viewBox=" 0 0 300 200">
+
+                        <image href="/img/strawberries.jpg" width=100% height=100% />
+                    </svg>
+
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>We Have a Dedicated Team</h1>
+                            <p>We are here at every step of the way. Discover the people behind the magic of effortless grocery shopping.</p>
+                            <p><a class="btn btn-lg btn-primary" href="Home/Cart">Our Team</a></p>
+                        </div>
+                    </div>
+                </div>
+
+      </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+      </div>
+
+
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing" style="max-width: 70rem;">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#85D68A" /><text style="font-size:xx-large;" x="45%" y="50%" fill="#FFFFFF" dy=".3em">1</text></svg>
+
+            <h2>Browse</h2>
+            <p>Browse our store for fresh fruits and vegetables. Get some fresh meat right from the butcher.</p>
+            <p><a class="btn btn-secondary" href="/Products/Index">View Products</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#FD6104" /><text style="font-size:xx-large;" x="45%" y="50%" fill="#FFFFFF" dy=".3em">2</text></svg>
+
+            <h2>Choose</h2>
+            <p>Shopping with us is easy and simple! Just add your items to the cart then click checkout when you're ready.</p>
+            <p><a class="btn btn-secondary" href="/Products/Index">View Products</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#45DD12" /><text style="font-size:xx-large;" x="45%" y="50%" fill="#FFFFFF" dy=".3em">3</text></svg>
+
+            <h2>Pay</h2>
+            <p>We have integrated online payment to enhance your experience. Simply login and enter your info!</p>
+            <p><a class="btn btn-secondary" href="/Products/Index">View Products</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">So local, so organic. <span class="text-muted">It’ll blow your mind.</span></h2>
+            <p class="lead">You can't afford to not try something from our great selection! Everything tastes better when it's natural.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="/img/bananas.jpg" class="w-100"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Supporting local businesses? <span class="text-muted">Yep, check.</span></h2>
+            <p class="lead">That's right, 100% of profits from this website all go to local businesses helping make your community even better!</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img src="/img/coolfarm.jpg" class="w-100" />
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

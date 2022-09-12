@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ShoppingAppMVC.Models.EF
 {
@@ -24,10 +21,11 @@ namespace ShoppingAppMVC.Models.EF
         {
             if (!optionsBuilder.IsConfigured)
             {
-#pragma warning disable CS1030 // #warning directive
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server=tcp:nikhilshah-project-server.database.windows.net, 1433;Initial Catalog=shoppingDB;Persist Security Info=False;User ID=project;Password=Cohort@1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
-#pragma warning restore CS1030 // #warning directive
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             }
         }
 
@@ -35,18 +33,23 @@ namespace ShoppingAppMVC.Models.EF
         {
             modelBuilder.Entity<Cart>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.Id)
+                    .HasName("pk_id");
 
                 entity.ToTable("Cart");
-
-                entity.Property(e => e.Cost)
-                    .HasColumnType("decimal(10, 2)")
-                    .HasColumnName("cost");
 
                 entity.Property(e => e.ItemName)
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("itemName");
+
+                entity.Property(e => e.Cost)
+                    .HasColumnType("decimal(10, 2)")
+                    .HasColumnName("cost");
+
+                entity.Property(e => e.Quantity)
+                    .HasColumnType("int")
+                    .HasColumnName("quantity");
 
                 entity.HasOne(d => d.ItemNameNavigation)
                     .WithMany()
@@ -69,11 +72,16 @@ namespace ShoppingAppMVC.Models.EF
                     .HasColumnName("cost");
 
                 entity.Property(e => e.Description)
-                    .HasMaxLength(20)
+                    .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("description");
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.Property(e => e.PictureFile)
+                    .HasMaxLength(40)
+                    .IsUnicode(false)
+                    .HasColumnName("pictureFile");
             });
 
             modelBuilder.Entity<User>(entity =>
