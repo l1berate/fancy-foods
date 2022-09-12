@@ -26,7 +26,23 @@ function showCart() {
     cartItemList.forEach(findTotalQuantity);
 
     document.getElementById("cart-item-count").innerText = sum;
+
+    if (window.location.pathname.substring(0,9) == "/Products") {
+        if (Cookies.get("items") != undefined) {
+            Cookies.get("items").split("|").forEach(hideAddBtns);
+        }
+    }
 }
+
+function hideAddBtns(item) {
+    //html/body / div / main / div[1] / div / div[3] / div / div[2] / h5
+    //html/body / div / main / div[1] / div / div[3] / div / div[3] / div[2] / button[1]
+    document.getElementById(item + " Quantity").parentElement.parentElement.style.display = "none";
+    document.getElementById(item + " Quantity").parentElement.parentElement.nextElementSibling.children[0].hidden = true;
+    document.getElementById(item + " Quantity").parentElement.parentElement.nextElementSibling.children[1].hidden = false;
+    document.getElementById(item + " Quantity").parentElement.parentElement.nextElementSibling.children[2].hidden = false;
+}
+
 
 function findTotalQuantity(item) {
     var q = Cookies.get(item);
