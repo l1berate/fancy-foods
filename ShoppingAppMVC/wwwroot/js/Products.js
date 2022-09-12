@@ -3,7 +3,7 @@
     const cartByeButtons = document.getElementsByClassName("cartbyebtn");
     const cartConfirmButtons = document.getElementsByClassName("cartconfirmbtn");
 
-    let index = 0;
+    var index = 0;
     for (let addbtn of cartAddButtons) {
         if (addbtn == btn) {
             break;
@@ -31,13 +31,13 @@
     if (Cookies.get('items') != undefined) {
         var currentCartItems = Cookies.get('items').split("|");
 
-        var index = currentCartItems.indexOf(itemName.replace(" ", "%20"));
+        var index = currentCartItems.indexOf(itemName);
         while (index != -1) {
-            var index = currentCartItems.indexOf(itemName.replace(" ", "%20"));
+            index = currentCartItems.indexOf(itemName);
             currentCartItems.splice(index, 1);
         }
 
-        Cookies.set('items', currentCartItems.toString().replace(",", "|") + '|' + itemName, { expires: 7 })
+        Cookies.set('items', currentCartItems.toString().replaceAll(",", "|") + '|' + itemName, { expires: 7 })
         Cookies.set(itemName, addMe, { expires: 7 })
     }
     else {
@@ -59,7 +59,7 @@ function remove(btn, itemName) {
     const cartByeButtons = document.getElementsByClassName("cartbyebtn");
     const cartConfirmButtons = document.getElementsByClassName("cartconfirmbtn");
 
-    let index = 0;
+    var index = 0;
     for (let byebtn of cartByeButtons) {
         if (byebtn == btn) {
             break;
@@ -90,10 +90,10 @@ function remove(btn, itemName) {
         var currentItems = Cookies.get('items');
         var currentItemList = currentItems.split("|");
 
-        var index = currentItemList.indexOf(itemName.replace(" ", "%20"));
+        var index = currentItemList.indexOf(itemName);
         currentItemList.splice(index, 1);
 
-        Cookies.set('items', currentItemList.toString().replace(",", "|"));
+        Cookies.set('items', currentItemList.toString().replaceAll(",", "|"), { expires: 7 });
         Cookies.remove(itemName);
         if (Cookies.get('items') == '') {
             Cookies.remove('items');
