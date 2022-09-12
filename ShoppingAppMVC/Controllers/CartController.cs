@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShoppingAppMVC.Models.EF;
 
@@ -20,7 +15,7 @@ namespace ShoppingAppMVC.Controllers
                 Problem("Entity set 'shoppingDBContext.Carts' is null.");
         }
 
-        public async Task<IActionResult> AddToCart([Bind("ItemName,Cost,Quantity")]Cart product)
+        public async Task<IActionResult> AddToCart([Bind("ItemName,Cost,Quantity")] Cart product)
         {
             if (ModelState.IsValid)
             {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ShoppingAppMVC.Models.EF
 {
