@@ -129,9 +129,9 @@ function updateQuantity(form) {
         }
     }
 
-    const newQuantity = parseInt(formsInPage[index][0].value);
+    const newQuantity = parseInt(formsInPage[index].children[0].children[0].value);
     const originalQuantity = formsInPage[index].parentElement.children[0];
-    if (newQuantity >= 0 && newQuantity <= 100) {
+    if (newQuantity > 0 && newQuantity <= 100) {
         originalQuantity.innerHTML = newQuantity;
         return false;
     }
@@ -152,7 +152,7 @@ function incrementMe(upButton) {
 function decrementMe(downButton) {
     const quantityButton = downButton.nextElementSibling.children[0];
     const currentValue = parseInt(quantityButton.innerHTML)-1;
-    if (currentValue >= 0) {
+    if (currentValue > 0) {
         quantityButton.innerHTML = currentValue;
     }
 }

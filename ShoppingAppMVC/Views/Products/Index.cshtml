@@ -33,12 +33,12 @@
                                 <button type="button" class="btn btn-outline-danger" onclick="decrementMe(this);"><b>-</b></button>
                                 <div class="dropup">
                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" id="@Html.DisplayFor(modelItem => item.ItemName) Quantity">1</button>
-                                    <form class="dropdown-menu dropdown-menu-center p-2" onsubmit="updateQuantity(this);return false;">
+                                    <div class="dropdown-menu dropdown-menu-center p-2">
                                         <div class="p-2">
                                             <input type="text" maxlength="3" min="0" max="100" step="1" style="width:3rem;text-align:center;vertical-align:middle;" id="@Html.DisplayFor(modelItem => item.ItemName) Form Input" placeholder="">
-                                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                            <button type="submit" class="btn btn-primary btn-sm" onclick="updateQuantity(this);">Update</button>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                                 <button type="button" class="btn btn-outline-success" onclick="incrementMe(this);"><b>+</b></button>
                             </div>
