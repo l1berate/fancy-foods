@@ -1,7 +1,6 @@
-using ShoppingAppMVC.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using ShoppingAppMVC.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

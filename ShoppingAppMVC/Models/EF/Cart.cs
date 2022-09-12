@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ShoppingAppMVC.Models.EF
+﻿namespace ShoppingAppMVC.Models.EF
 {
     public partial class Cart
     {

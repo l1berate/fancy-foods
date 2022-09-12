@@ -22,3 +22,11 @@ body::before {
     content: '';
     height: 70px;
 }
+
+.modal-backdrop {
+    z-index: 1029 !important;
+}
+
+.modal-content {
+    top: 3rem;
+}

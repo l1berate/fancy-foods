@@ -1,6 +1,7 @@
 ﻿function addToCart(btn, itemName) {
     const cartAddButtons = document.getElementsByClassName("cartaddbtn");
     const cartByeButtons = document.getElementsByClassName("cartbyebtn");
+    const cartConfirmButtons = document.getElementsByClassName("cartconfirmbtn");
 
     let index = 0;
     for (let addbtn of cartAddButtons) {
@@ -14,6 +15,7 @@
 
     cartAddButtons[index].hidden = true;
     cartByeButtons[index].hidden = false;
+    cartConfirmButtons[index].hidden = false;
 
     const quantityButtons = document.getElementsByClassName("btn-group me-2");
 
@@ -22,9 +24,27 @@
     var cartItemCounter = document.getElementById('cart-item-count');
     var counter = cartItemCounter.innerHTML;
     var quantityField = document.getElementsByClassName("btn btn-outline-secondary");
-    var addMe = quantityField[index].innerHTML;
+    var addMe = quantityField[index*2].innerHTML;
     counter = parseInt(counter) + parseInt(addMe);
     cartItemCounter.innerHTML = counter;
+
+    if (Cookies.get('items') != undefined) {
+        var currentCartItems = Cookies.get('items').split("|");
+
+        var index = currentCartItems.indexOf(itemName.replace(" ", "%20"));
+        while (index != -1) {
+            var index = currentCartItems.indexOf(itemName.replace(" ", "%20"));
+            currentCartItems.splice(index, 1);
+        }
+
+        Cookies.set('items', currentCartItems.toString().replace(",", "|") + '|' + itemName, { expires: 7 })
+        Cookies.set(itemName, addMe, { expires: 7 })
+    }
+    else {
+        Cookies.set('items', itemName, { expires: 7 })
+        Cookies.set(itemName, addMe, { expires: 7 })
+    }
+    
 
     var itemAdded = document.getElementById('toastItemName');
     itemAdded.innerHTML = itemName;
@@ -37,6 +57,7 @@
 function remove(btn, itemName) {
     const cartAddButtons = document.getElementsByClassName("cartaddbtn");
     const cartByeButtons = document.getElementsByClassName("cartbyebtn");
+    const cartConfirmButtons = document.getElementsByClassName("cartconfirmbtn");
 
     let index = 0;
     for (let byebtn of cartByeButtons) {
@@ -50,6 +71,7 @@ function remove(btn, itemName) {
 
     cartAddButtons[index].hidden = false;
     cartByeButtons[index].hidden = true;
+    cartConfirmButtons[index].hidden = true;
 
     const quantityButtons = document.getElementsByClassName("btn-group me-2");
 
@@ -58,9 +80,25 @@ function remove(btn, itemName) {
     var cartItemCounter = document.getElementById('cart-item-count');
     var counter = cartItemCounter.innerHTML;
     var quantityField = document.getElementsByClassName("btn btn-outline-secondary");
-    var addMe = quantityField[index].innerHTML;
+    var addMe = quantityField[index*2].innerHTML;
     counter = parseInt(counter) - parseInt(addMe);
     cartItemCounter.innerHTML = counter;
+
+    quantityField[index*2].innerHTML = 1;
+
+    if (Cookies.get('items') != undefined) {
+        var currentItems = Cookies.get('items');
+        var currentItemList = currentItems.split("|");
+
+        var index = currentItemList.indexOf(itemName.replace(" ", "%20"));
+        currentItemList.splice(index, 1);
+
+        Cookies.set('items', currentItemList.toString().replace(",", "|"));
+        Cookies.remove(itemName);
+        if (Cookies.get('items') == '') {
+            Cookies.remove('items');
+        }
+    }
 
     var itemDeleted = document.getElementById('toastItemNameDel');
     itemDeleted.innerHTML = itemName;
