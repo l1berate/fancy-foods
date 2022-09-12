@@ -14,7 +14,10 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: url("/img/farm.jpg") fixed;
+    background-size: cover;
+    color:white;
 }
 
 body::before {
@@ -29,4 +32,9 @@ body::before {
 
 .modal-content {
     top: 3rem;
+}
+
+footer {
+    background-color: white;
+    text-align: center;
 }
