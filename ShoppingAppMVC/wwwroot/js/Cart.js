@@ -42,6 +42,10 @@ function showCart() {
             document.getElementById("example-cart-rowCO").hidden = true;
         } 
     }
+
+    if (window.location.pathname == "/Shopping" || window.location.pathname.substring(0, 16) == "/Shopping/Index") {
+        purgeCookies();
+    }
 }
 
 function hideAddBtns(item) {
@@ -138,4 +142,29 @@ async function renderPriceCO(itemToBePriced, itemRow, quant) {
 
     var tot = newsub * 1.07;
     document.getElementById("totalMoneyCO").innerText = tot.toFixed(2);
+}
+
+var itemsForOrder = "";
+
+function submitOrder() {
+    itemsForOrder = "";
+    const currentCookies = Cookies.get("items");
+    if (currentCookies != undefined) {
+        currentCookies.split("|").forEach(combineNameAndQuant)
+        itemsForOrder = itemsForOrder.substring(0, itemsForOrder.length - 1);
+        document.getElementById("itemsList").value = itemsForOrder;
+    }
+    return true;
+}
+
+function combineNameAndQuant(name) {
+    itemsForOrder += name + "--" + Cookies.get(name) + "|";
+}
+
+function purgeCookies() {
+    Object.keys(Cookies.get()).forEach(function (cookieName, trash) {
+        var trash = {};
+        Cookies.remove(cookieName);
+    });
+    document.getElementById("cart-item-count").innerText = 0;
 }
