@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ShoppingAppMVC.Services;
 using ShoppingAppMVC.Models.EF;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using ShoppingAppMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
