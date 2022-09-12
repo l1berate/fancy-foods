@@ -32,6 +32,16 @@ function showCart() {
             Cookies.get("items").split("|").forEach(hideAddBtns);
         }
     }
+
+    if (window.location.pathname.substring(0, 18) == "/Shopping/Checkout") {
+        if (Cookies.get("items") != undefined) {
+            removeElementsByClass("checkout-item");
+            document.getElementById("subtotalMoneyCO").innerText = "0.00";
+            document.getElementById("totalMoneyCO").innerText = "0.00";
+            cartItemList.forEach(addItemsCO);
+            document.getElementById("example-cart-rowCO").hidden = true;
+        } 
+    }
 }
 
 function hideAddBtns(item) {
@@ -60,6 +70,23 @@ function addItems(item) {
     newRow.removeAttribute("id");
     newRow.children[0].innerHTML = item + " x " + Cookies.get(item);
     renderPrice(item, newRow, Cookies.get(item));
+    newRow.children[1].innerHTML = "$0.00";
+    newRow.children[1].style = "text-align:end;";
+
+    rowExample.parentNode.insertBefore(newRow, rowExample.nextSibling);
+}
+
+function addItemsCO(item) {
+    document.getElementById("example-cart-rowCO").hidden = false;
+
+    let rowExample = document.getElementById("example-cart-rowCO");
+
+    let newRow = rowExample.cloneNode(true);
+
+    newRow.setAttribute("class", "row checkout-item");
+    newRow.removeAttribute("id");
+    newRow.children[0].innerHTML = item + " x " + Cookies.get(item);
+    renderPriceCO(item, newRow, Cookies.get(item));
     newRow.children[1].innerHTML = "$0.00";
     newRow.children[1].style = "text-align:end;";
 
@@ -96,4 +123,19 @@ async function renderPrice(itemToBePriced, itemRow, quant) {
 
     var tot = newsub * 1.07;
     document.getElementById("totalMoney").innerText = tot.toFixed(2);
+}
+
+async function renderPriceCO(itemToBePriced, itemRow, quant) {
+    let itemInfo = await getPrice(itemToBePriced);
+    let cost = itemInfo['cost'];
+    let price = cost * quant;
+
+    itemRow.children[1].innerHTML = "$" + price.toFixed(2);
+
+    const subtot = parseFloat(document.getElementById("subtotalMoneyCO").innerText);
+    var newsub = subtot + parseFloat(price);
+    document.getElementById("subtotalMoneyCO").innerText = newsub.toFixed(2);
+
+    var tot = newsub * 1.07;
+    document.getElementById("totalMoneyCO").innerText = tot.toFixed(2);
 }

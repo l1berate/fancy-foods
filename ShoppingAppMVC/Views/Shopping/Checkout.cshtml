@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Checkout";
+}
+
+<script src="/js/Cart.js"></script>
+
+<div class="row" style="background-color: rgba(255,255,255,0.75);margin: 3rem;">
+    <div class="container d-flex justify-content-center" style="text-align:center;">
+        <div class="col" style="padding:2rem;">
+            <h1 style="text-align: center;">@ViewData["Title"]</h1>
+            <div class="container" id="checkout-body">
+                <div class="row row-cols-1 row-cols-md-2 g-3">
+                    <div class="col">
+                        <hr />
+                        <div class="row" id="example-cart-rowCO">
+                            <div class="col" style="text-align:left;">
+                                Nothing x 0
+                            </div>
+                            <div class="col" style="text-align:end;">
+                                $0.00
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="subtotalCO" style="text-align:end;">
+                            Subtotal: $<span id="subtotalMoneyCO">0.00</span>
+                        </div>
+                        <hr />
+                        <div id="totalCO" style="text-align:end;">
+                            Total: $<span id="totalMoneyCO">0.00</span>
+                        </div>
+                    </div>
+                    <div class="col" id="Nothing in Cart" hidden>
+                        <hr />
+                        <div class="row">
+                            <div class="col" style="padding:2rem;">
+                                Darn! You don't have anything in your cart yet. Click <a href="/Products/Index">here</a> to go do so!
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row d-flex justify-content-center">
+                            <div class="col col-sm-4">
+                                <a type="button" class="btn btn-info" href="/Products/Index">Go to Products</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-center" id="Something in Cart">
+                        <form>
+                            <hr />
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" style="text-align:center;" class="form-control" id="fullName" placeholder="Food Lover">
+                            </div>
+                            <div class="mb-3">
+                                <label for="emailAddress" class="form-label">Email Address</label>
+                                <input type="email" style="text-align:center;" class="form-control" id="emailAddress" aria-describedby="emailAddress" placeholder="example@email.com">
+                                <div id="emailAddress" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" style="text-align:center;" class="form-control" id="address" placeholder="123 Main St, Town, NY">
+                            </div>
+                            <div class="mb-3">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <input style="text-align:center;" class="form-control" id="cardNumber" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+                            </div>
+                            <div class="mb-3">
+                                <label for="expDate" class="form-label">Expiration Date</label>
+                                <input type="text" style="text-align:center;" class="form-control" id="expDate" placeholder="XX/XX">
+                            </div>
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">CVV #</label>
+                                <input type="text" style="text-align:center;" class="form-control" id="cvvNo" placeholder="XXX">
+                            </div>
+                            <hr />
+                            <button type="submit" class="btn btn-success">Place Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
