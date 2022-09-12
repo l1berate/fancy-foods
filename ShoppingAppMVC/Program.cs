@@ -5,9 +5,6 @@ using ShoppingAppMVC.Data;
 using ShoppingAppMVC.Models.EF;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ShoppingAppMVC.Services;
-using ShoppingAppMVC.Data;
-using ShoppingAppMVC.Models.EF;
-using NuGet.Protocol.Core.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
