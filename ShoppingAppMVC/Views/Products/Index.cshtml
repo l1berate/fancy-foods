@@ -46,6 +46,7 @@
                             <div class="cart-buttons">
                                 <button type="button" class="btn btn-primary cartaddbtn" onclick="addToCart(this, '@Html.DisplayFor(modelItem => item.ItemName)');">Add to Cart</button>
                                 <button hidden type="button" class="btn btn-danger cartbyebtn" onclick="remove(this, '@Html.DisplayFor(modelItem => item.ItemName)');">Remove</button>
+                                <button hidden type="button" class="btn btn-outline-secondary cartconfirmbtn" disabled>Added to Cart &#9989;</button>
                             </div>
                         </div>
                 </div>
