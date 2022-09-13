@@ -22,6 +22,12 @@ body {
     bottom: 3rem;
     z-index: 10;
 }
+.carousel-caption h1 {
+    color:#000;
+}
+    .carousel-caption p {
+        color: #f2f2f2;
+    }
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
