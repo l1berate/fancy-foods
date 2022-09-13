@@ -2,6 +2,10 @@
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System;
+using System.Threading.Tasks;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
 namespace ShoppingAppMVC.Services;
 
@@ -20,11 +24,10 @@ public class EmailSender : IEmailSender
 
     public async Task SendEmailAsync(string toEmail, string subject, string message)
     {
-        if (string.IsNullOrEmpty(Options.SendGridKey))
-        {
-            throw new Exception("Null SendGridKey");
-        }
-        await Execute(Options.SendGridKey, subject, message, toEmail);
+        var kvUri = $"https://shoppingappmvckeyvault.vault.azure.net/";
+        var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+        var secret = await client.GetSecretAsync("SendGridKey");
+        await Execute(secret.Value.Value, subject, message, toEmail);
     }
 
     public async Task Execute(string apiKey, string subject, string message, string toEmail)

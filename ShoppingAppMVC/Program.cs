@@ -5,6 +5,9 @@ using ShoppingAppMVC.Data;
 using ShoppingAppMVC.Models.EF;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ShoppingAppMVC.Services;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
