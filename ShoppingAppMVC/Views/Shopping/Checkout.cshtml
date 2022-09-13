@@ -52,13 +52,13 @@
                             <hr />
                             <div class="mb-3">
                                 <label asp-for="FullName" class="form-label">Full Name</label>
-                                <input asp-for="FullName" type="text" style="text-align:center;" class="form-control" id="fullName" name="fullName" placeholder="Food Lover">
+                                <input asp-for="FullName" type="text" style="text-align:center;" class="form-control" id="fullName" name="fullName" placeholder="Food Lover" onchange="submitOrder();">
                                 <span asp-validation-for="FullName" class="text-danger"></span>
                             </div>
                             <div class="mb-3">
                                 <label asp-for="EmailAddress" class="form-label">Email Address</label>
                                 <input asp-for="EmailAddress" type="email" style="text-align:center;" class="form-control" id="emailAddress" name="emailAddress" aria-describedby="emailAddress" placeholder="example@email.com">
-                                <div id="emailAddress" class="form-text">We'll never share your email with anyone else.</div>
+                                <div id="emailAddress" class="form-text" style="color:white;font-size:smaller;padding-inline:1rem;"> We'll never share your email with anyone else. </div>
                                 <span asp-validation-for="EmailAddress" class="text-danger"></span>
                             </div>
                             <div class="mb-3">
@@ -82,7 +82,7 @@
                                 <span asp-validation-for="CvvNumber" class="text-danger"></span>
                             </div>
                             <hr />
-                            <button type="submit" class="btn btn-success" onsubmit="submitOrder();">Place Order</button>
+                            <button type="submit" class="btn btn-success" onclick="submitOrder();">Place Order</button>
                         </form>
                     </div>
                 </div>

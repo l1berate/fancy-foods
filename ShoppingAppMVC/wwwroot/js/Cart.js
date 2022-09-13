@@ -40,6 +40,7 @@ function showCart() {
             document.getElementById("totalMoneyCO").innerText = "0.00";
             cartItemList.forEach(addItemsCO);
             document.getElementById("example-cart-rowCO").hidden = true;
+            submitOrder();
         } 
     }
 
@@ -152,7 +153,8 @@ function submitOrder() {
     if (currentCookies != undefined) {
         currentCookies.split("|").forEach(combineNameAndQuant)
         itemsForOrder = itemsForOrder.substring(0, itemsForOrder.length - 1);
-        document.getElementById("itemsList").value = itemsForOrder;
+
+        document.getElementById("ItemsList").value = itemsForOrder;
     }
     return true;
 }
