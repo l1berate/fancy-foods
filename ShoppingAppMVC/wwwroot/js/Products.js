@@ -81,7 +81,7 @@ function remove(btn, itemName) {
     var counter = cartItemCounter.innerHTML;
     var quantityField = document.getElementsByClassName("btn btn-outline-secondary");
     var addMe = quantityField[index*2].innerHTML;
-    counter = parseInt(counter) - parseInt(addMe);
+    counter = parseInt(counter) - parseInt(Cookies.get(itemName));
     cartItemCounter.innerHTML = counter;
 
     quantityField[index*2].innerHTML = 1;

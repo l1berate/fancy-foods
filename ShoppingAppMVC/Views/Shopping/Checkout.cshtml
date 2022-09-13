@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Checkout";
+}
+
+@model ShoppingAppMVC.Models.EF.Order
+
+<script src="/js/Cart.js"></script>
+
+<div class="row" style="background-color: rgba(255,255,255,0.75);margin: 3rem;">
+    <div class="container d-flex justify-content-center" style="text-align:center;">
+        <div class="col" style="padding:2rem;">
+            <h1 style="text-align: center;">@ViewData["Title"]</h1>
+            <div class="container" id="checkout-body">
+                <div class="row row-cols-1 row-cols-md-2 g-3">
+                    <div class="col">
+                        <hr />
+                        <div class="row" id="example-cart-rowCO">
+                            <div class="col" style="text-align:left;">
+                                Nothing x 0
+                            </div>
+                            <div class="col" style="text-align:end;">
+                                $0.00
+                            </div>
+                        </div>
+                        <hr />
+                        <div id="subtotalCO" style="text-align:end;">
+                            Subtotal: $<span id="subtotalMoneyCO">0.00</span>
+                        </div>
+                        <hr />
+                        <div id="totalCO" style="text-align:end;">
+                            Total: $<span id="totalMoneyCO">0.00</span>
+                        </div>
+                    </div>
+                    <div class="col" id="Nothing in Cart" hidden>
+                        <hr />
+                        <div class="row">
+                            <div class="col" style="padding:2rem;">
+                                Darn! You don't have anything in your cart yet. Click <a href="/Products/Index">here</a> to go do so!
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row d-flex justify-content-center">
+                            <div class="col col-sm-4">
+                                <a type="button" class="btn btn-info" href="/Products/Index">Go to Products</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-center" id="Something in Cart">
+                        <form asp-action="Create" method="post">
+                            <input type="hidden" asp-for="ItemsList" value="Banana" />
+                            <span asp-validation-for="ItemsList" asp-for="ItemsList" class="text-danger"></span>
+                            <hr />
+                            <div class="mb-3">
+                                <label asp-for="FullName" class="form-label">Full Name</label>
+                                <input asp-for="FullName" type="text" style="text-align:center;" class="form-control" id="fullName" name="fullName" placeholder="Food Lover" onchange="submitOrder();">
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="EmailAddress" class="form-label">Email Address</label>
+                                <input asp-for="EmailAddress" type="email" style="text-align:center;" class="form-control" id="emailAddress" name="emailAddress" aria-describedby="emailAddress" placeholder="example@email.com">
+                                <div id="emailAddress" class="form-text" style="color:white;font-size:smaller;padding-inline:1rem;"> We'll never share your email with anyone else. </div>
+                                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Address" class="form-label">Address</label>
+                                <input asp-for="Address" type="text" style="text-align:center;" class="form-control" id="address" name="address" placeholder="123 Main St, Town, NY">
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="CardNumber" class="form-label">Card Number</label>
+                                <input asp-for="CardNumber" style="text-align:center;" class="form-control" id="cardNumber" name="cardNumber" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+                                <span asp-validation-for="CardNumber" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ExpDate" class="form-label">Expiration Date</label>
+                                <input asp-for="ExpDate"  type="text" style="text-align:center;" class="form-control" id="expDate" name="expDate" placeholder="XX/XX">
+                                <span asp-validation-for="ExpDate" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="CvvNumber" class="form-label">CVV #</label>
+                                <input asp-for="CvvNumber" type="text" style="text-align:center;" class="form-control" id="cvvNo" name="cvvNumber" placeholder="XXX">
+                                <span asp-validation-for="CvvNumber" class="text-danger"></span>
+                            </div>
+                            <hr />
+                            <button type="submit" class="btn btn-success" onclick="submitOrder();">Place Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

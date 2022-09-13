@@ -1,4 +1,7 @@
-﻿namespace ShoppingAppMVC.Models.EF
+﻿using System;
+using System.Collections.Generic;
+
+namespace ShoppingAppMVC.Models.EF
 {
     public partial class Item
     {

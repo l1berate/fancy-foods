@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ShoppingAppMVC.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/carouselstyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" asp-append-version="true" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -17,7 +18,7 @@
 </head>
 
 
-<body>
+<body onpageshow="showCart();">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
             <div class="container-fluid ">
@@ -38,6 +39,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
@@ -47,16 +51,41 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted mt-5">
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn text-white btn-floating m-1"
+               style="background-color: #3b5998;"
+               href="#!"
+               role="button">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+       
+        <!-- Twitter -->
+        <a class="btn text-white btn-floating m-1"
+           style="background-color: #55acee;"
+           href="#!"
+           role="button">
+            <i class="fab fa-twitter"></i>
+        </a>
+            <!-- Instagram -->
+            <a class="btn text-white btn-floating m-1"
+               style="background-color: #ac2bac;"
+               href="#!"
+               role="button">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </section>
         <div class="container">
             &copy; 2022 - Fancy Foods - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

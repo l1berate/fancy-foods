@@ -1,0 +1,1 @@
+Scaffold-DbContext "Server=tcp:nikhilshah-project-server.database.windows.net,1433;database=shoppingDB;User Id=project;Password=Cohort@1234" -OutputDir Models\EF -Provider Microsoft.EntityFrameworkCore.SqlServer -Force -Context shoppingDBContext
