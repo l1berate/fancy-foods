@@ -5,7 +5,7 @@ week to build a MVP using ASP.Net MVC.
 
 The goals for this project were-
 - Demonstrate an ability to code and work well within a group
-- Learn and show competency in ASP.Net MVC, EF, Identity, SQLServer, C#, Azure DevOps, WebAPI, Bootstrap, HTML, JS, Css
+- Learn and show competency in ASP.Net MVC, EF, Identity, SQLServer, C#, Azure DevOps, WebAPI, Bootstrap, HTML, JS, CSS
 - Considering industry standards, We incorporated Git and DevOps/Agile/Scrum methodologies/practices by using Azure DevOps Boards and Repos
 - Present an MVP which satisfies the minimum requirements
 We successfully accomplished all of these goals by using Azure DevOps boards to coordinate and Azure Repos to host our code and manage version control. 
